@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- 设计令牌 ---------- */
+:root {
+  --brand-500: #2e5bff;
+  --brand-600: #1e47e0;
+  --brand-50: #eef2ff;
+  --ink-900: #0f1b2d;
+  --ink-700: #334155;
+  --ink-500: #64748b;
+  --ink-400: #94a3b8;
+  --line: rgba(230, 234, 242, 0.6);
+  --canvas: #f8faff;
+  --danger: #e5484d;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  --success: #10b981;
+  --radius-card: 20px;
+  --radius-ctl: 10px;
+
+  /* 弥散风格配色 */
+  --diffuse-blue: rgba(46, 91, 255, 0.15);
+  --diffuse-pink: rgba(255, 105, 180, 0.12);
+  --diffuse-purple: rgba(147, 112, 219, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.65);
+}
+
+/* ---------- 基础重置 ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--ink-900);
+  font-family: 'Manrope', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--canvas);
+  background-image:
+    radial-gradient(circle at 10% 20%, var(--diffuse-blue) 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, var(--diffuse-pink) 0%, transparent 35%),
+    radial-gradient(circle at 50% 50%, var(--diffuse-purple) 0%, transparent 50%),
+    radial-gradient(circle at 80% 90%, var(--diffuse-blue) 0%, transparent 30%),
+    radial-gradient(circle at 20% 80%, var(--diffuse-pink) 0%, transparent 30%);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--brand-500);
+  text-decoration: none;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 布局与质感 ---------- */
+.shell {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.surface {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-card);
+  box-shadow:
+    0 8px 32px -8px rgba(31, 38, 135, 0.07),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.surface-hover {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.surface-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 48px -12px rgba(31, 38, 135, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+
+.section-sub {
+  font-size: 13px;
+  color: var(--ink-500);
+}
+
+.divider-y {
+  border-top: 1px dashed var(--line);
+}
+
+/* ---------- 动效 ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pop {
+  animation: pop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .pop {
+    animation: none;
+  }
+}
+
+/* ---------- Ant Design 视觉对齐 ---------- */
+.ant-btn {
+  border-radius: var(--radius-ctl);
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ant-btn-primary {
+  background: linear-gradient(135deg, var(--brand-500), #6d8bff);
+  border: none;
+  box-shadow: 0 8px 20px -8px rgba(46, 91, 255, 0.6);
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background: linear-gradient(135deg, var(--brand-600), #5a7be0);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -10px rgba(46, 91, 255, 0.8);
+}
+
+.ant-btn-link {
+  color: var(--brand-500);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ant-btn-link[disabled],
+.ant-btn-link[disabled]:hover {
+  color: var(--ink-400);
+}
+
+.ant-input,
+.ant-select-selection,
+.ant-input-affix-wrapper {
+  border-radius: var(--radius-ctl);
+  background: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(4px);
+}
+
+.ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper:focus,
+.ant-input:focus {
+  box-shadow: 0 0 0 3px rgba(46, 91, 255, 0.1);
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.ant-table {
+  background: transparent !important;
+}
+
+.ant-table-thead > tr > th {
+  background: rgba(248, 250, 255, 0.4) !important;
+  backdrop-filter: blur(4px);
+  color: var(--ink-500);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid rgba(241, 244, 250, 0.5);
+  background: transparent !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: rgba(46, 91, 255, 0.03) !important;
+}
+
+.ant-pagination-item-active {
+  border-color: var(--brand-500);
+  background: var(--brand-500);
+}
+
+.ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+.ant-progress-inner {
+  background: rgba(238, 242, 255, 0.5);
+}

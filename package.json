@@ -1,0 +1,33 @@
+/Users/ammaralikhan/Desktop/UI风格参考2.png{
+  "name": "audit-risk-task-manager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c magenta,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node api/server.js",
+    "dev:web": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node api/server.js"
+  },
+  "dependencies": {
+    "ant-design-vue": "1.7.8",
+    "axios": "1.7.7",
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "multer": "1.4.5-lts.1",
+    "vue": "2.7.16",
+    "vue-router": "3.6.5",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue2": "2.3.1",
+    "autoprefixer": "10.4.20",
+    "concurrently": "9.0.1",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.14",
+    "vite": "4.5.5"
+  }
+}
